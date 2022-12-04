@@ -18,6 +18,15 @@ public class JamModel {
     /** the current configuration */
     private JamConfig currentConfig;
     //private Solver solver;
+    /**
+     * Message sent when a board has successfully loaded.
+     */
+    public static String LOADED = "loaded";
+    /**
+     * Message sent when a board has failed to load.
+     */
+    public static String LOAD_FAILED = "loadFailed";
+    public static String HINT_PREFIX = "Hint:";
 
 
     private static String filename;
@@ -44,7 +53,7 @@ public class JamModel {
             }
             else {
                 currentConfig=(JamConfig)hint.get(1);
-                alertObservers("Next step!");
+                alertObservers(HINT_PREFIX +"Next step!");
             }
         }
 
@@ -86,9 +95,9 @@ public class JamModel {
             Scanner scan = new Scanner(new File(filename));
             JamModel.filename =filename;
             currentConfig=new JamConfig(filename);
-              alertObservers("Loaded: "+ filename);
+              alertObservers(LOADED + filename);
         } catch (FileNotFoundException e) {
-            alertObservers("Failed to load: ");
+            alertObservers(LOAD_FAILED);
             
         }
 
@@ -103,11 +112,12 @@ public class JamModel {
     public char getCell(int row, int col){
         return currentConfig.cell(row,col);
     }
-    public void gameOver(){
+    public boolean gameOver(){
         if(currentConfig.cell(JamConfig.row,JamConfig.col-1)=='X'){
             alertObservers("Game over!");
             }
-        }
+        return false;
+    }
 
 
     /**

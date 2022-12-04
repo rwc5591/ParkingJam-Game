@@ -58,7 +58,6 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
     private JamModel model;
 
 
-
     public JamGUI(){
         this.fp=new FlowPane();
         this.stage= new Stage();
@@ -66,7 +65,6 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         this.lb= new Label();
         this.pane= new GridPane();
         this.model=new JamModel();
-
 
     }
 
@@ -129,7 +127,6 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         int row=6;
         int col=6;
         pane.getChildren().clear();
-
         for(int i=0; i< JamConfig.row; i++){
             for(int j=0; j<JamConfig.col; j++){
                 Button btn = new Button();
@@ -174,12 +171,9 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
                 pane.add(btn, j,i);
 
 
-
-
             }
         }
         bp.setCenter(pane);
-
 
     }
 
