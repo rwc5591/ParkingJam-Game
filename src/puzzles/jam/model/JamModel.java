@@ -17,7 +17,7 @@ public class JamModel {
 
     /** the current configuration */
     private JamConfig currentConfig;
-    private Solver solver;
+    //private Solver solver;
 
 
     private static String filename;
@@ -27,11 +27,12 @@ public class JamModel {
     public static final char EMPTY= '.';
 
     public JamModel(){
-        this.solver=new Solver();
+      //  this.solver=new Solver();
         isSelected=false;
 
     }
     public void getHint(){
+        Solver solver = new Solver();
         if(currentConfig.isSolution()){
             alertObservers("Already Solved!");
 
@@ -48,6 +49,11 @@ public class JamModel {
         }
 
     }
+
+    public static int getMoves() {
+        return moves;
+    }
+
     public void select(int row, int col){
         if(isSelected){
             isSelected=false;
