@@ -20,7 +20,7 @@ public class Jam {
             System.out.println("Unique configs: "  + Solver.uniqConfigCount);
             if(sol!=null) {
                 for (int i = 0; i < sol.size(); i++) {
-                    System.out.println("Step " + i + ": " + sol.get(i));
+                    System.out.println("Step " + i + ": " +"\n" + sol.get(i));
 
                 }
 
