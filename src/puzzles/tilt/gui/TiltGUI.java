@@ -16,6 +16,10 @@ public class TiltGUI extends Application implements Observer<TiltModel, String> 
 
     // for demonstration purposes
     private Image greenDisk = new Image(getClass().getResourceAsStream(RESOURCES_DIR+"green.png"));
+    private Image blueDisk = new Image(getClass().getResourceAsStream(RESOURCES_DIR+"blue.png"));
+    private Image block = new Image(getClass().getResourceAsStream(RESOURCES_DIR+"block.png"));
+    private Image hole = new Image(getClass().getResourceAsStream(RESOURCES_DIR+"hole.png"));
+
 
     public void init() {
         String filename = getParameters().getRaw().get(0);

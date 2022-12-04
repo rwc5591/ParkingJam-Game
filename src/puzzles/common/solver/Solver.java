@@ -3,14 +3,14 @@ package puzzles.common.solver;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.application.Application;
 
 public class Solver {
-    // TODO
     private LinkedList<Configuration> queue;
-    private HashMap<Configuration, Configuration> predecessor;//link neighbors to each other
-    public static int uniqConfigCount=0;
+    private HashMap<Configuration, Configuration> predecessor;      // link neighbors to each other
+    public static int uniqConfigCount = 0;
 
-    //queue list
+    // queue list
     // predecessor map
     public Solver() {
         this.queue = new LinkedList<>();
@@ -21,18 +21,20 @@ public class Solver {
         queue.add(config);
         uniqConfigCount++;
         predecessor.put(config, null);
+
         while (!queue.isEmpty()) {
             // the next node to process is at the front of the queue
             Configuration current = queue.remove(0);
+
             if (current.isSolution()) {
                 LinkedList<Configuration> path = new LinkedList<>();
                 Configuration currConfig = current;
+
                 while (currConfig != null) {
                     path.add(0, currConfig);
                     currConfig = predecessor.get(currConfig);
                 }
                 return path;
-
             }
 
             for (Configuration nbr : current.getNeighbors()) {
@@ -42,11 +44,8 @@ public class Solver {
                     queue.add(nbr);
                     uniqConfigCount++;
                 }
-
             }
-
         }
         return null;
     }
-
 }
