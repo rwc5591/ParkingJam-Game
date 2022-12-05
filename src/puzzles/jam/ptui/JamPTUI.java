@@ -22,6 +22,9 @@ public class JamPTUI implements Observer<JamModel, String> {
     private boolean gameOn;
     private String msg;
 
+    /**
+     * Constuctor
+     */
     public JamPTUI(){
         model=new JamModel();
         model.addObserver(this);
@@ -30,6 +33,9 @@ public class JamPTUI implements Observer<JamModel, String> {
     }
 
 
+    /**
+     * @return Loads the game
+     */
     public boolean loadFromFile(){
         boolean ready = false;
 
@@ -57,6 +63,10 @@ public class JamPTUI implements Observer<JamModel, String> {
         }
         return true;
     }
+
+    /**
+     * @return sets the game instructions
+     */
     public boolean gameStart(){
 
         boolean ready = false;
@@ -95,6 +105,10 @@ public class JamPTUI implements Observer<JamModel, String> {
         in = new Scanner(System.in);//get rid of any remaining commands from the start menu
         return true;
     }
+
+    /**
+     * Loads the board
+     */
     public void displayBoard(){
         System.out.print("  ");
         for(int i=0; i< JamConfig.row; i++){

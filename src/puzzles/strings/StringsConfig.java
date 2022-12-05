@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
+/**
+ * Reg Chuhi
+ * */
 
 public class StringsConfig implements Configuration {
     private static String start;
@@ -14,17 +17,29 @@ public class StringsConfig implements Configuration {
     public static int configCount=1;
 
 
+    /**
+     * @param start
+     * @param current
+     * @param finish
+     * Constuctor
+     */
     public StringsConfig(String start, String current, String finish) {
         StringsConfig.start = start;
         StringsConfig.finish = finish;
         this.current = current;
     }
 
+    /**
+     * @return returns the soultion
+     */
     @Override
     public boolean isSolution() {
         return current.equals(finish);
     }
 
+    /**
+     * @return neighbors
+     */
     @Override
     public Collection<Configuration> getNeighbors() {
 

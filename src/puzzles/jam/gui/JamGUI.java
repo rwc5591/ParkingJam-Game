@@ -27,7 +27,6 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
     /** The resources directory is located directly underneath the gui package */
     private final static String RESOURCES_DIR = "resources/";
 
-    // for demonstration purposes
     private final static String X_CAR_COLOR = "#DF0101";
     private final static String A_CAR_COLOR = "#01DF6C";
     private final static String B_CAR_COLOR = "#C65A27";
@@ -58,6 +57,7 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
     private JamModel model;
 
 
+
     public JamGUI(){
         this.fp=new FlowPane();
         this.stage= new Stage();
@@ -76,6 +76,13 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         model.loadGame(filename);
     }
 
+    /**
+     * @param stage the primary stage for this application, onto which
+     *              the application scene can be set.
+     *              Applications may create other stages, if needed, but they will not be
+     *              primary stages.
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Button button1 = new Button();
@@ -86,7 +93,6 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         button1.setText("X");
         button1.setMinSize(ICON_SIZE, ICON_SIZE);
         button1.setMaxSize(ICON_SIZE, ICON_SIZE);
-        //pane = new GridPane();
 
         bp = new BorderPane(pane);
         lb = new Label();
@@ -106,6 +112,10 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Sets the path to load the game
+     */
     public void fileChooser(){
         //create a new FileChooser
         FileChooser fileChooser = new FileChooser();
@@ -120,6 +130,11 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
     }
 
 
+    /**
+     * @param jamModel the object that wishes to inform this object
+     *                 about something that has happened.
+     * @param message  optional data the server.model can send to the observer
+     */
     @Override
     public void update(JamModel jamModel, String message) {
         //set message
@@ -127,6 +142,7 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
         int row=6;
         int col=6;
         pane.getChildren().clear();
+        //loop through the rows and column and create new buttons depending on the loaded game specifications
         for(int i=0; i< JamConfig.row; i++){
             for(int j=0; j<JamConfig.col; j++){
                 Button btn = new Button();
@@ -137,6 +153,9 @@ public class JamGUI extends Application  implements Observer<JamModel, String>  
                 btn.setText(String.valueOf(model.getCell(i,j)));
                 btn.setMinSize(ICON_SIZE, ICON_SIZE);
                 btn.setMaxSize(ICON_SIZE, ICON_SIZE);
+                /**
+                 * sets the car colors
+                 * */
 
                 switch(model.getCell(i,j)){
                     case 'A'-> btn.setStyle("-fx-background-color: " + A_CAR_COLOR + ";");

@@ -40,6 +40,12 @@ public class JamModel {
         isSelected=false;
 
     }
+
+    /**
+     * Checks if current config is a solution
+     * moves the car to the next position
+     * alerts observers if already solved or no solution
+     */
     public void getHint(){
         Solver solver = new Solver();
         if(currentConfig.isSolution()){
@@ -63,6 +69,12 @@ public class JamModel {
         return moves;
     }
 
+    /**
+     * @param row
+     * @param col
+     * Selects the car to be moved and the position its moving to
+     * alerts observers of movement or if it cant move
+     */
     public void select(int row, int col){
         if(isSelected){
             isSelected=false;
@@ -90,6 +102,12 @@ public class JamModel {
 
 
     }
+
+    /**
+     * @param filename
+     * Loads the game from file
+     * alerts observers if loaded or not
+     */
     public void loadGame(String filename){
         try {
             Scanner scan = new Scanner(new File(filename));
@@ -104,14 +122,29 @@ public class JamModel {
 
 
     }
+
+    /**
+     * Resets the game back to the start
+     */
     public void reset(){
         currentConfig=new JamConfig(filename);
         alertObservers("Reset: ");
 
     }
+
+    /**
+     * @param row
+     * @param col
+     * @return the current cell on the board
+     */
     public char getCell(int row, int col){
         return currentConfig.cell(row,col);
     }
+
+    /**
+     * @return checks if game is over
+     * alerts observers
+     */
     public boolean gameOver(){
         if(currentConfig.cell(JamConfig.row,JamConfig.col-1)=='X'){
             alertObservers("Game over!");
@@ -125,10 +158,6 @@ public class JamModel {
      *
      * @param observer the view
      */
-    //load config/ reset the game get hints selections  tostring for the tui quit
-    //, load, ,quit,reset.
-
-
 
 
     public void addObserver(Observer<JamModel, String> observer) {

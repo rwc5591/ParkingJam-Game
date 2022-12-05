@@ -23,6 +23,10 @@ public class JamConfig implements Configuration {
 
     private static HashMap<Character, int[]> carMap;
 
+    /**
+     * @param filename
+     * Reads the file and sets the row and col fields, number of cars and car position on the board.
+     */
     public JamConfig(String filename){
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -78,6 +82,13 @@ public class JamConfig implements Configuration {
 
 
     }
+
+    /**
+     * @param other
+     * @param car
+     * @param row
+     * @param col
+     */
     private JamConfig(JamConfig other, char car, int row, int col){
         board=new char[JamConfig.row][JamConfig.col];
         for (int i = 0; i <JamConfig.row; i++) {
@@ -108,10 +119,21 @@ public class JamConfig implements Configuration {
 
     }
 
+    /**
+     * @param row
+     * @param col
+     * @return the current cell on the board
+     */
     public char cell(int row, int col){
         return board[row][col];
 
     }
+
+    /**
+     * @param row
+     * @param col
+     * @param car
+     */
     public void moveCar(int row, int col, char car) {
         //check car if horizontal move left or right, if vertical move up or down
         board[row][col]=car;
@@ -143,15 +165,18 @@ public class JamConfig implements Configuration {
             if (row>0){
                 if(board[row-1][col]==car){
                     board[row-(pos[2]-pos[0]+1)][col]=EMPTY;
-
                 }
-
                 }
-
             }
-        
 
         }
+
+    /**
+     * @param row
+     * @param col
+     * @param car
+     * @return Checks if the car can be moved up down left or right
+     */
     public boolean canMove(int row, int col, char car){
         int[] pos=carMap.get(car);
         if (pos[0] == pos[2]){
@@ -199,7 +224,9 @@ public class JamConfig implements Configuration {
     }
 
 
-
+    /**
+     * @return Checks if the car 'X' is at the end of the board
+     */
         @Override
         public boolean isSolution () {
 
@@ -208,6 +235,9 @@ public class JamConfig implements Configuration {
         }
 
 
+    /**
+     * @return Gets neighbors
+     */
         @Override
         public Collection<Configuration> getNeighbors () {
             ArrayList<Configuration> neighbors = new ArrayList<>();
@@ -288,6 +318,9 @@ public class JamConfig implements Configuration {
             return Arrays.deepHashCode(board);
         }
 
+    /**
+     * @return to string
+     */
         @Override
         public String toString () {
             StringBuilder result = new StringBuilder();

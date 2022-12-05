@@ -3,9 +3,12 @@ package puzzles.common.solver;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+/**
+ *
+ * Reg Chuhi*/
 
 public class Solver {
-    // TODO
+
     private LinkedList<Configuration> queue;
     private HashMap<Configuration, Configuration> predecessor;//link neighbors to each other
     public static int uniqConfigCount=0;
@@ -17,6 +20,10 @@ public class Solver {
         this.predecessor = new HashMap<>();
     }
 
+    /**
+     * @param config
+     * @return
+     */
     public LinkedList<Configuration> solve(Configuration config) {
         queue.add(config);
         uniqConfigCount++;
