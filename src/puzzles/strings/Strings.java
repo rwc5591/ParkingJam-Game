@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import javafx.application.Application;
 
 /**
  * Main class for the strings puzzle.

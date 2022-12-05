@@ -23,13 +23,10 @@ public class Jam {
                     System.out.println("Step " + i + ": " +"\n" + sol.get(i));
 
                 }
-
             }
             else {
                 System.out.println("No solution");
             }
-
-
         }
 
 
