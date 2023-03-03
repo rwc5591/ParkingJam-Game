@@ -21,7 +21,7 @@ import java.nio.file.Paths;
  *
  *
  * Reg Chuhi
- * cs242
+ * csi242
  * **/
 
 public class JamGUI extends Application  implements Observer<JamModel, String>  {
